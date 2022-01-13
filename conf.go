@@ -85,8 +85,8 @@ func String(v interface{}) (string, error) {
 		s.WriteString("=")
 		v := fmt.Sprintf("%v", fld.Field.Interface())
 
-		switch {
-		case fld.Options.Mask:
+		switch fld.Options.Mask {
+		case true:
 			if u, err := url.Parse(v); err == nil {
 				userPass := u.User.String()
 				if userPass != "" {
